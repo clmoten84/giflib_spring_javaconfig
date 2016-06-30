@@ -73,13 +73,4 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-    
-    /**
-     * Register the home page view to display home page on application start up
-     * @param registry 
-     */
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry){
-        registry.addViewController("/").setViewName("home.html");
-    }
 }

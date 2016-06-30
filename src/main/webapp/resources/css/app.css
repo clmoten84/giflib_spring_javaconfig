@@ -119,11 +119,11 @@ nav ul li.active, nav ul li:hover {
 }
 
 .mark.favorite {
-    background: url(icons/favorite.png) no-repeat 0 0;
+    background: url(../icons/favorite.png) no-repeat 0 0;
 }
 
 .unmark.favorite {
-    background: url(icons/unfavorite.png) no-repeat 0 0;
+    background: url(../icons/unfavorite.png) no-repeat 0 0;
 }
 
 .gif-detail .col {
