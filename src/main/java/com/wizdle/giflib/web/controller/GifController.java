@@ -7,7 +7,6 @@ package com.wizdle.giflib.web.controller;
 
 import com.wizdle.giflib.web.data.GifRepository;
 import com.wizdle.giflib.web.model.Gif;
-import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Controller for handling GIF related requests
@@ -39,5 +38,19 @@ public class GifController {
         Gif gif = gifRepository.findByName(name);
         modelMap.put("gif", gif);
         return "gif-details.html";
+    }
+    
+    @RequestMapping(value = "/favorites", method = RequestMethod.GET)
+    public String favorites(ModelMap modelMap){
+        List<Gif> favoriteGifs = gifRepository.findAllFavorites();
+        modelMap.put("gifs", favoriteGifs);
+        return "favorites.html";
+    }
+    
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String searchGifs(@RequestParam(value = "query") String query, ModelMap modelMap){
+        List<Gif> foundGifs = gifRepository.searchByName(query);
+        modelMap.put("gifs", foundGifs);
+        return "home.html";
     }
 }
